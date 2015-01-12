@@ -44,6 +44,12 @@
 
 	button {
 		margin-top: 20px;
+		margin-bottom:20px;
+	}
+
+	.alert {
+		margin-top:20px;
+		display:none;
 	}
 
 </style>
@@ -64,8 +70,9 @@
 
 					</div>
 
-					<button class="btn btn-success btn-lrg"> Find my weather</button>
+					<button id="findMyWeather" class="btn btn-success btn-lrg"> Find my weather</button>
 				</form>
+				<div class="alert alert-success">Success</div>
 			</div>
 		</div>
 	</div>
@@ -78,6 +85,23 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>	
 
+	<script>
+		$("#findMyWeather").click(function(event) {
+			event.preventDefault();
+
+			if($("#city").val() != "") {
+				$.get("scrapper.php?city="+$("#city").val(), function(data) {
+					
+					$(".alert").html(data).fadeIn();
+
+				})	
+			}
+			else {
+				alert("Please enter a city");
+			}
+			
+		})
+	</script>
 </body>
 
 
