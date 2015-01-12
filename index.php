@@ -72,9 +72,11 @@
 
 					<button id="findMyWeather" class="btn btn-success btn-lrg"> Find my weather</button>
 				</form>
+
 				<div id="success" class="alert alert-success">Success</div>
 				<div id="fail" class="alert alert-danger">Could not find weather data for that city. Please try again.</div>
 				<div id="noCity" class="alert alert-danger">Please enter a city.</div>
+				<div id="troll" class="alert alert-danger">FUCK HER RIGHT THE PUSSY</div>
 			</div>
 		</div>
 	</div>
@@ -97,6 +99,7 @@
 					
 					if(data =="") {
 						$("#fail").fadeIn();
+						$("#troll").fadeIn();
 					}
 					else {
 						$("#success").html(data).fadeIn();
