@@ -26,7 +26,7 @@
 		height:100%;
 		background-size:cover;
 		background-position: center;
-		padding-top: 150px;
+		padding-top: 100px;
 	}
 
 	.center {
@@ -72,7 +72,9 @@
 
 					<button id="findMyWeather" class="btn btn-success btn-lrg"> Find my weather</button>
 				</form>
-				<div class="alert alert-success">Success</div>
+				<div id="success" class="alert alert-success">Success</div>
+				<div id="fail" class="alert alert-danger">Could not find weather data for that city. Please try again.</div>
+				<div id="noCity" class="alert alert-danger">Please enter a city.</div>
 			</div>
 		</div>
 	</div>
@@ -88,16 +90,22 @@
 	<script>
 		$("#findMyWeather").click(function(event) {
 			event.preventDefault();
-
+			$(".alert").hide();
 			if($("#city").val() != "") {
 				$.get("scrapper.php?city="+$("#city").val(), function(data) {
 					
-					$(".alert").html(data).fadeIn();
-
+					
+					if(data =="") {
+						$("#fail").fadeIn();
+					}
+					else {
+						$("#success").html(data).fadeIn();
+					}
 				})	
 			}
 			else {
-				alert("Please enter a city");
+				$
+				$("#noCity").fadeIn();
 			}
 			
 		})
